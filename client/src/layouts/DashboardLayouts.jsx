@@ -74,6 +74,13 @@ export default function DashboardLayouts() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.797.607 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                     </div>
+                    {/* About Link */}
+                    <Link
+                        to="/dashboard/about"
+                        className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-600 hover:to-blue-500 text-white rounded-xl font-bold shadow-lg transition-all duration-200 tracking-wide text-center"
+                    >
+                        About
+                    </Link>
                     <button
                         onClick={logout}
                         className="w-full py-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white rounded-xl font-bold shadow-lg transition-all duration-200 tracking-wide"

@@ -8,6 +8,7 @@ import DashboardLayouts from "../layouts/DashboardLayouts";
 import Intro from "../pages/dashboard/Intro";
 import TodoList from "../pages/dashboard/TodoList";
 import PrivateRoute from "./PrivateRoute";
+import About from "../pages/dashboard/About";
 
 
 export default function AppRoutes() {
@@ -28,6 +29,7 @@ export default function AppRoutes() {
       >
         <Route path="/dashboard/intro" element={<Intro />} />
         <Route path="/dashboard/todo-list" element={<TodoList />} />
+        <Route path="/dashboard/about" element={<About/>} />
     
       </Route>
 

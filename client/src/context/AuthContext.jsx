@@ -29,6 +29,7 @@ function AuthProvider({ children }) {
 	}
 	function logout() {
 		setIsAuth(false);
+		userService.logout(); // Clear current user from localStorage
 		Swal.fire({
 			title: "Success",
 			text: "Logout successful",
@@ -38,6 +39,7 @@ function AuthProvider({ children }) {
 	function register(email, password) {
 		try {
 			userService.addUser(email, password);
+			userService.authenticate(email, password); // Set current user after registration
 			setIsAuth(true);
 			navigate('/dashboard/intro');
 			Swal.fire({

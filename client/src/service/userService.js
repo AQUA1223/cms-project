@@ -33,7 +33,20 @@ class UserService {
     if (user.password !== password) {
       throw new Error("wrong password");
     }
+    // Set current user in localStorage on successful login
+    localStorage.setItem("currentUser", email);
   }
+
+  getCurrentUser() {
+    // Get the currently logged-in user's email
+    return localStorage.getItem("currentUser");
+  }
+
+  logout() {
+    // Remove the current user from localStorage
+    localStorage.removeItem("currentUser");
+  }
+
   editUserEmail(email, newEmail) {
     if (!this.isUserExists(email)) {
       throw new Error("user not exists");

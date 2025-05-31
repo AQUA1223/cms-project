@@ -89,20 +89,43 @@ export default function TodoList() {
       <div className="absolute bottom-0 right-0 w-56 h-56 bg-pink-200 rounded-full opacity-20 blur-2xl animate-pulse z-0" style={{ filter: 'blur(60px)' }} />
       {/* Plus Icon and Notes List */}
       <div className="flex flex-col items-center w-full z-10">
+        {/* Total Notes Above Plus Icon */}
+        {!showNotepad && !editIdx && (
+          <div className="w-full max-w-2xl mb-8">
+            <div className="flex items-center justify-between bg-blue-50 rounded-xl px-6 py-4 shadow-inner border-t-2 border-blue-200 mb-8">
+              <div className="flex items-center space-x-3">
+                <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
+                </svg>
+                <span className="text-blue-700 font-bold text-lg">Total Notes:</span>
+              </div>
+              <span className="text-blue-900 font-extrabold text-2xl">{arr.length}</span>
+            </div>
+          </div>
+        )}
+        {/* Plus Icon */}
         {!showNotepad && !editIdx && (
           <button
             onClick={() => setShowNotepad(true)}
-            className="flex flex-col items-center justify-center bg-white rounded-full shadow-2xl border-4 border-blue-300 p-12 hover:scale-105 transition mb-10 drop-shadow-xl hover:shadow-blue-200/80"
+            className="flex flex-col items-center justify-center bg-white rounded-full shadow-2xl border-4 border-blue-300 p-12 hover:scale-105 transition mb-10 drop-shadow-xl hover:shadow-blue-200/80 group"
             style={{ minWidth: 220 }}
           >
-            <svg className="w-20 h-20 text-blue-600 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 48 48">
-              <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="3" fill="#e0f2fe" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M24 14v20M14 24h20" stroke="currentColor" strokeWidth="4" />
-            </svg>
+            {/* Professional Plus Icon */}
+            <span className="relative flex items-center justify-center w-20 h-20 mb-4">
+              <span className="absolute w-full h-full rounded-full bg-gradient-to-tr from-blue-400 via-blue-200 to-blue-100 shadow-lg group-hover:from-blue-500 group-hover:to-blue-200 transition" />
+              <svg className="relative z-10 w-12 h-12 text-blue-700 group-hover:text-blue-900 transition" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="3" fill="#e0f2fe" />
+                <rect x="21" y="13" width="6" height="22" rx="3" fill="#3b82f6" />
+                <rect x="13" y="21" width="22" height="6" rx="3" fill="#3b82f6" />
+                <rect x="21" y="13" width="6" height="22" rx="3" fill="#2563eb" opacity="0.2" />
+                <rect x="13" y="21" width="22" height="6" rx="3" fill="#2563eb" opacity="0.2" />
+              </svg>
+              <span className="absolute w-24 h-24 rounded-full bg-blue-200 opacity-20 blur-2xl z-0" />
+            </span>
             <span className="text-2xl font-bold text-blue-700">New Notes</span>
           </button>
         )}
-
         {/* Notes List Below Plus Icon */}
         {!showNotepad && !editIdx && (
           <div className="w-full max-w-2xl mb-8">
@@ -144,16 +167,6 @@ export default function TodoList() {
                 </li>
               ))}
             </ul>
-            <div className="flex items-center justify-between bg-blue-50 rounded-xl px-6 py-4 shadow-inner border-t-2 border-blue-200 mt-6">
-              <div className="flex items-center space-x-3">
-                <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
-                </svg>
-                <span className="text-blue-700 font-bold text-lg">Total Notes:</span>
-              </div>
-              <span className="text-blue-900 font-extrabold text-2xl">{arr.length}</span>
-            </div>
           </div>
         )}
       </div>
@@ -224,7 +237,9 @@ export default function TodoList() {
             <div className="max-w-lg mx-auto mt-4">
               <h2 className="text-4xl font-black mb-8 text-center text-blue-700 tracking-widest drop-shadow">Edit Note</h2>
               <form onSubmit={handleEditSave} className="flex flex-col mb-10 space-y-4 z-10 relative">
+                <label htmlFor="edit-title" className="text-blue-700 font-semibold mb-1">Title</label>
                 <input
+                  id="edit-title"
                   placeholder={editValue.title || "Title"}
                   type="text"
                   required
@@ -232,7 +247,9 @@ export default function TodoList() {
                   onChange={e => setEditValue({ ...editValue, title: e.target.value })}
                   className="px-5 py-4 border-2 border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 text-blue-900 font-medium shadow-inner placeholder-blue-400"
                 />
+                <label htmlFor="edit-subject" className="text-blue-700 font-semibold mb-1">Subject</label>
                 <input
+                  id="edit-subject"
                   placeholder={editValue.subject || "Subject"}
                   type="text"
                   required
@@ -240,7 +257,9 @@ export default function TodoList() {
                   onChange={e => setEditValue({ ...editValue, subject: e.target.value })}
                   className="px-5 py-4 border-2 border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 text-blue-900 font-medium shadow-inner placeholder-blue-400"
                 />
+                <label htmlFor="edit-note" className="text-blue-700 font-semibold mb-1">Note</label>
                 <textarea
+                  id="edit-note"
                   placeholder={editValue.note || "Type your note here..."}
                   required
                   value={editValue.note || ""}

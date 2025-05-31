@@ -126,7 +126,9 @@ export default function SavedNotes() {
               <div className="max-w-lg mx-auto mt-4">
                 <h2 className="text-4xl font-black mb-8 text-center text-blue-700 tracking-widest drop-shadow">Edit Note</h2>
                 <form onSubmit={handleEditSave} className="flex flex-col mb-10 space-y-4 z-10 relative">
+                  <label htmlFor="edit-title" className="text-blue-700 font-semibold mb-1">Title</label>
                   <input
+                    id="edit-title"
                     placeholder="Title"
                     type="text"
                     required
@@ -134,7 +136,9 @@ export default function SavedNotes() {
                     onChange={e => setEditTitle(e.target.value)}
                     className="px-5 py-4 border-2 border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 text-blue-900 font-medium shadow-inner"
                   />
+                  <label htmlFor="edit-subject" className="text-blue-700 font-semibold mb-1">Subject</label>
                   <input
+                    id="edit-subject"
                     placeholder="Subject"
                     type="text"
                     required
@@ -142,7 +146,9 @@ export default function SavedNotes() {
                     onChange={e => setEditSubject(e.target.value)}
                     className="px-5 py-4 border-2 border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 text-blue-900 font-medium shadow-inner"
                   />
+                  <label htmlFor="edit-note" className="text-blue-700 font-semibold mb-1">Note</label>
                   <textarea
+                    id="edit-note"
                     placeholder="Note"
                     required
                     value={editNote}

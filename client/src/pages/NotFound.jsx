@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export default function NotFound() {
   return (
@@ -13,7 +13,7 @@ export default function NotFound() {
           Sorry, the page you are looking for does not exist or has been moved.
         </p>
         <Link
-          to={'/home'}
+          to={'/'}
           className="mt-4 px-6 py-2 bg-black text-white rounded-full shadow hover:scale-105 transition-transform"
         >
           Go Home

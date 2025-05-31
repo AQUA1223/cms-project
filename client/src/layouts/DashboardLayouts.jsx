@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const PATHS = [
     { path: '/dashboard/intro', text: 'Intro' },
     { path: '/dashboard/todo-list', text: 'New Notes' },
+    { path: '/dashboard/savednotes', text: 'Saved Notes' }, // Added Saved Notes link
 ];
 
 export default function DashboardLayouts() {

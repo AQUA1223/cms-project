@@ -59,6 +59,11 @@ class UserService {
     });
     localStorage.removeItem("db");
     localStorage.setItem("db", JSON.stringify(this.db));
+    // If the current user is changing their own email, update currentUser as well
+    const currentUser = this.getCurrentUser();
+    if (currentUser === email) {
+      localStorage.setItem("currentUser", newEmail);
+    }
   }
 
   editUserPassword(email, newPassword) {
@@ -73,6 +78,20 @@ class UserService {
     });
     localStorage.removeItem("db");
     localStorage.setItem("db", JSON.stringify(this.db));
+  }
+
+  deleteUser(email) {
+    if (!this.isUserExists(email)) {
+      throw new Error("user not exists");
+    }
+    this.db.users = this.db.users.filter((obj) => obj.email !== email);
+    localStorage.removeItem("db");
+    localStorage.setItem("db", JSON.stringify(this.db));
+    // If the deleted user is the current user, log them out
+    const currentUser = this.getCurrentUser();
+    if (currentUser === email) {
+      this.logout();
+    }
   }
 }
 

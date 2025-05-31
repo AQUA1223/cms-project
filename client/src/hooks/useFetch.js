@@ -34,8 +34,35 @@ const useFetch = (url, options = {}) => {
             isMounted = false;
         };
     }, [url, JSON.stringify(options)]);
-
-    return { data, loading, error };
+    // Add a refetch function to allow manual re-fetching
+    const refetch = () => {
+        setLoading(true);
+        setError(null);
+        let isMounted = true;
+        fetch(url, options)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((json) => {
+                if (isMounted) {
+                    setData(json);
+                    setLoading(false);
+                }
+            })
+            .catch((err) => {
+                if (isMounted) {
+                    setError(err);
+                    setLoading(false);
+                }
+            });
+        return () => {
+            isMounted = false;
+        };
+    };
+    return { data, loading, error, refetch };
 };
 
 export default useFetch;

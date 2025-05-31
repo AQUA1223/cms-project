@@ -14,8 +14,15 @@ export default function SignUp() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 font-serif text-lg">
-      <div className="w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 font-serif text-lg relative overflow-hidden">
+      {/* Simple GIF motion background */}
+      <img
+        src="https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif"
+        alt="Animated background"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none z-0"
+        style={{ zIndex: 0 }}
+      />
+      <div className="w-full max-w-md z-10">
         <form
           onSubmit={handleSubmit}
           className="bg-white/90 backdrop-blur-lg p-10 rounded-2xl shadow-2xl border border-gray-200"

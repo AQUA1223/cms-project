@@ -14,8 +14,17 @@ export default function Sign_in() {
   }
   
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200 font-sans text-lg">
-      <div className="w-full max-w-md p-8 bg-white/80 rounded-2xl shadow-2xl backdrop-blur-md border border-blue-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200 font-sans text-lg relative overflow-hidden">
+      {/* Simple animated motion background */}
+      <img
+        src="https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif"
+        alt="Animated background"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none z-0"
+        style={{ zIndex: 0 }}
+      />
+      <div className="absolute top-0 left-0 w-40 h-40 bg-blue-200 rounded-full opacity-30 blur-2xl animate-pulse z-0 motion-safe:animate-bounce" style={{ filter: 'blur(40px)' }} />
+      <div className="absolute bottom-0 right-0 w-56 h-56 bg-pink-200 rounded-full opacity-20 blur-2xl animate-pulse z-0 motion-safe:animate-ping" style={{ filter: 'blur(60px)' }} />
+      <div className="w-full max-w-md p-8 bg-white/80 rounded-2xl shadow-2xl backdrop-blur-md border border-blue-100 z-10">
         <form onSubmit={handleSubmit} className="space-y-6">
           <h2 className="text-3xl font-extrabold text-center text-blue-700 mb-2 tracking-tight font-serif">
             Welcome Back

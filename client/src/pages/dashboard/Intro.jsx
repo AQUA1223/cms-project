@@ -5,7 +5,7 @@ export default function Intro() {
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Animated GIF background */}
             <img
-                src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"
+                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2Z2b2J6d3F2b2J6d3F2b2J6d3F2b2J6d3F2b2J6d3F2b2J6/g7sQv1Q9y5Q2A/giphy.gif"
                 alt="Animated background"
                 className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
                 style={{ zIndex: 0 }}
